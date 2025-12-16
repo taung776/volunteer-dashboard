@@ -13,82 +13,96 @@ Base URL (development):
 ### POST /auth/register
 Register a new user.
 
-**Request**
-```json
+Request:
 {
   "email": "user@example.com",
   "password": "password123",
   "fullName": "Jane Doe"
 }
 
-**Response**
-```json
+Response:
 {
   "token": "jwt_token_here"
 }
 
-### POST /auth/register
+---
+
+### POST /auth/login
 Authenticate an existing user.
 
-**Request**
-```json
+Request:
 {
   "email": "user@example.com",
   "password": "password123"
 }
 
-**Response**
-```json
+Response:
 {
   "token": "jwt_token_here"
 }
 
-## Organization
+---
+
+## Organizations
 
 ### POST /organizations
-Create a new organizations.
+Create a new organization.
 
-Access: Authenticated user
-Role: User becomes Admin of organization
+Access:
+- Authenticated user
+- Creator becomes Admin of the organization
 
-**Request**
-```json
+Request:
 {
   "name": "Helping Hands",
   "description": "Community volunteer organization"
 }
 
+---
+
 ### GET /organizations/:id
 Get organization details.
 
-Access: Organization members details.
+Access:
+- Organization members only
+
+---
+
+## Organization Members
 
 ### POST /organizations/:id/members
 Add a user to an organization.
 
-Access: Admin only
+Access:
+- Admin only
 
-**Request**
-```json
+Request:
 {
   "email": "volunteer@example.com",
   "role": "volunteer"
 }
 
+---
+
 ### GET /organizations/:id/members
 List all members of an organization.
 
-Access: Admin, Coordinator
+Access:
+- Admin
+- Coordinator
+
+---
 
 ## Events
 
 ### POST /organizations/:id/events
 Create a new event.
 
-Access: Admin, Coordinator
+Access:
+- Admin
+- Coordinator
 
-**Request**
-```json
+Request:
 {
   "title": "Food Drive",
   "description": "Help distribute food",
@@ -96,58 +110,72 @@ Access: Admin, Coordinator
   "capacity": 20
 }
 
+---
+
 ### GET /organizations/:id/events
 List all events for an organization.
 
-Access: Organization members
+Access:
+- Organization members
 
-### PUT /organizations/:id
+---
+
+### PUT /events/:id
 Update an event.
 
-Access: Admin, Coordinator
+Access:
+- Admin
+- Coordinator
+
+---
 
 ### DELETE /events/:id
 Delete an event.
 
-Access: Admin
+Access:
+- Admin only
+
+---
+
+## Event Signups
 
 ### POST /events/:id/signup
 Sign the authenticated user up for an event.
 
-Access: Volunteer
+Access:
+- Volunteer
+
+---
 
 ### DELETE /events/:id/signup
 Cancel signup for an event.
 
-Access: Volunteer (self only)
+Access:
+- Volunteer (self only)
+
+---
 
 ## Dashboard
 
 ### GET /organizations/:id/dashboard
-
 Retrieve dashboard metrics for an organization.
 
-Access: Admin, Coordinator
+Access:
+- Admin
+- Coordinator
 
-**Response**
-```json
+Response:
 {
   "totalVolunteers": 42,
   "upcomingEvents": 5,
   "totalHoursLogged": 320
 }
 
+---
 
+## Authorization Rules Summary
 
-
-
-
-
-
-
-
-
-
-
-
-
+- Users must belong to an organization to access its resources
+- Admins have full access within their organization
+- Coordinators can manage events but not organization members
+- Volunteers can only manage their own event participation
