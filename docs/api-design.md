@@ -22,6 +22,7 @@ Register a new user.
 }
 
 **Response**
+```json
 {
   "token": "jwt_token_here"
 }
@@ -30,12 +31,14 @@ Register a new user.
 Authenticate an existing user.
 
 **Request**
+```json
 {
   "email": "user@example.com",
   "password": "password123"
 }
 
 **Response**
+```json
 {
   "token": "jwt_token_here"
 }
@@ -49,6 +52,7 @@ Access: Authenticated user
 Role: User becomes Admin of organization
 
 **Request**
+```json
 {
   "name": "Helping Hands",
   "description": "Community volunteer organization"
@@ -65,6 +69,7 @@ Add a user to an organization.
 Access: Admin only
 
 **Request**
+```json
 {
   "email": "volunteer@example.com",
   "role": "volunteer"
@@ -83,6 +88,7 @@ Create a new event.
 Access: Admin, Coordinator
 
 **Request**
+```json
 {
   "title": "Food Drive",
   "description": "Help distribute food",
@@ -124,6 +130,7 @@ Retrieve dashboard metrics for an organization.
 Access: Admin, Coordinator
 
 **Response**
+```json
 {
   "totalVolunteers": 42,
   "upcomingEvents": 5,
