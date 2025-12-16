@@ -195,7 +195,7 @@ Response:
 
 ## Authorization Rules Summary
 
-- Users must belong to an organization to access its resources
+- Users must logged in to sign up for an event.
 - Admins have full access within their organization
 - Coordinators can manage events but not organization members
 - Volunteers can only manage their own event participation
