@@ -63,8 +63,14 @@ Request:
 ### GET /organizations/:id
 Get organization details.
 
-Access:
-- Organization members only
+Public (read-only)
+
+---
+
+### GET /organizations/:id/events
+List all events for an organization.
+
+Public (read-only)
 
 ---
 
@@ -112,11 +118,17 @@ Request:
 
 ---
 
-### GET /organizations/:id/events
-List all events for an organization.
+### GET /events
+List all events.
 
-Access:
-- Organization members
+Public (read-only)
+
+---
+
+### GET /events/:id
+Get an event information.
+
+Public (read-only)
 
 ---
 
