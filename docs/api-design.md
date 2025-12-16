@@ -60,12 +60,20 @@ Request:
 
 ---
 
+### GET /organizations
+Get organization list.
+
+Public (read-only)
+
+---
+
 ### GET /organizations/:id
 Get organization details.
 
 Public (read-only)
 
 ---
+
 
 ### GET /organizations/:id/events
 List all events for an organization.
