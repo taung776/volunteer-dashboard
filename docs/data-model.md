@@ -71,3 +71,41 @@ Tracks volunteer participation in events.
 | status | enum | signed_up, canceled |
 | hours_logged | decimal | Nullable |
 | signed_up_at | timestamp |  |
+
+
+---
+
+## Entity Relationships
+
+- A **User** can belong to multiple **Organizations**
+- An **Organization** can have many **Users**
+- The relationship between Users and Organizations is managed through **OrganizationMembers**
+
+- An **Organization** can create multiple **Events**
+- An **Event** belongs to exactly one **Organization**
+
+- A **User** can sign up for multiple **Events**
+- An **Event** can have multiple **Users**
+- The relationship between Users and Events is managed through **EventSignups**
+
+---
+
+## Roles & Permissions
+
+### Admin
+- Manage organization details
+- Add/remove members
+- Assign roles
+- Create, update, and delete events
+- View all event signups and metrics
+
+### Coordinator
+- Create and manage events
+- View volunteer signups
+- Cannot manage organization members
+
+### Volunteer
+- View available events
+- Sign up for or cancel event participation
+- View personal participation history
+
